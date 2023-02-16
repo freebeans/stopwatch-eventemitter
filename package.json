@@ -1,6 +1,6 @@
 {
   "name": "stopwatch-eventemitter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple Stopwatch class which emits events when it's stopped or times out.",
   "main": "index.js",
   "scripts": {

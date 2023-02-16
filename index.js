@@ -1,12 +1,10 @@
-module.exports = StopwatchEventEmitter;
-
 class StopwatchEventEmitter {
     constructor({event, eventEmitter, timeout}, data) {
         this.event = event;
         this.eventEmitter = eventEmitter;
         this.timeoutMs = timeout;
         this.data = data;
-
+        
         // Calling this.stop() will trigger an internal Promise fullfillment
         this.stopPromise = new Promise( resolve => {
             this.stop = resolve.bind(this, this._stop_InternalCallback)
@@ -21,7 +19,7 @@ class StopwatchEventEmitter {
         
         // Races the timeout and stop Promises. Whichever fullfills first will have its argument called.
         Promise.any([timeoutPromise, this.stopPromise]).then(fn => fn.apply(this))
-
+        
         return this;
     }
 
@@ -36,3 +34,5 @@ class StopwatchEventEmitter {
         this.eventEmitter.emit(this.event, {timeoutExpired: true, data: this.data})
     }
 }
+
+module.exports = StopwatchEventEmitter;
