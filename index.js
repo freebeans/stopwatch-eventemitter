@@ -18,6 +18,17 @@ class StopwatchEventEmitter {
         
         // Creates and starts a timeout Promise
         const timeoutPromise = new Promise( resolve => setTimeout( () => resolve(this._timeoutExpired_InternalCallback), this.timeoutMs))
+        
+        // Races the timeout and stop Promises. Whichever fullfills first will have its argument called.
+        Promise.any([timeoutPromise, this.stopPromise]).then(fn => fn.apply(this))
+
+        return this;
+    }
+
+    _stop_InternalCallback() {
+        this.stopTime = new Date()
+        this.diff = this.stopTime - this.startTime
+        
         this.eventEmitter.emit(this.event, {timeDiff: this.diff, data: this.data})
     }
 
