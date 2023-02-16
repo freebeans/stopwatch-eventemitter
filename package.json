@@ -1,0 +1,24 @@
+{
+  "name": "stopwatch-eventemitter",
+  "version": "1.0.0",
+  "description": "A simple Stopwatch class which emits events when it's stopped or times out.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freebeans/stopwatch-eventemitter.git"
+  },
+  "keywords": [
+    "stopwatch",
+    "event",
+    "emitter"
+  ],
+  "author": "Filipe Nicoli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freebeans/stopwatch-eventemitter/issues"
+  },
+  "homepage": "https://github.com/freebeans/stopwatch-eventemitter#readme"
+}
